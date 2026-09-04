@@ -48,11 +48,11 @@ if role == "Citizen Reporter":
 
     if uploaded_file and st.button("Analyze & Dispatch Alert", type="primary"):
         image = Image.open(uploaded_file)
-        st.image(image, caption="Uploaded Image", use_container_width=True)
+        st.image(image, caption="Uploaded Image", use_column_width=True)
 
         with st.spinner("Gemini 1.5 Flash analyzing visual hazard..."):
             try:
-                model = genai.GenerativeModel("gemini-1.5-flash")
+                model = genai.GenerativeModel('gemini-3.6-flash')
                 prompt = (
                     "Analyze this emergency or infrastructure hazard image. "
                     "Return ONLY a clean JSON object with the following keys: "
@@ -107,5 +107,5 @@ else:
     st_folium(m, width=900, height=450)
 
     st.subheader("Active Incidents Queue")
-    st.dataframe(df, use_container_width=True)
+    st.dataframe(df)
           
